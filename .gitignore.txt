@@ -1,0 +1,45 @@
+# Build folders
+build/
+bin/
+out/
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Object files
+*.o
+*.obj
+*.lo
+
+# Debug files
+*.pdb
+*.ilk
+
+# Logs
+*.log
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE files
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model files (large files)
+models/shape_predictor_68_face_landmarks.dat
+
+# Temporary files
+*.tmp
+*.temp
