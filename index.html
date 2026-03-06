@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Drowsiness Monitoring</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js (for future EAR graph) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #0f172a;
+            color: #e5e7eb;
+        }
+
+        header {
+            padding: 20px 30px;
+            background: #020617;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        header span {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: #020617;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #1e293b;
+        }
+
+        .card h3 {
+            margin: 0 0 15px;
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status {
+            font-size: 28px;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .awake { background: #052e16; color: #22c55e; }
+        .warning { background: #3f2d0c; color: #facc15; }
+        .drowsy { background: #3f1d0c; color: #f97316; }
+        .critical { background: #450a0a; color: #ef4444; }
+
+        .metric {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .label {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        footer {
+            padding: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 280px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚗 Driver Drowsiness Detection</h1>
+    <span>Real-time vision-based driver monitoring system</span>
+</header>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+    <div>
+        <div class="card">
+            <h3>Driver State</h3>
+            <div id="statusBadge" class="status awake">AWAKE</div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h3>Eye Aspect Ratio</h3>
+            <div id="earValue" class="metric">0.000</div>
+            <div class="label">Live EAR</div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h3>Thresholds</h3>
+            <div class="label">Awake: ≥ 0.27</div>
+            <div class="label">Warning: 0.23 – 0.27</div>
+            <div class="label">Drowsy: 0.18 – 0.23</div>
+            <div class="label">Critical: &lt; 0.18</div>
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div>
+        <div class="card">
+            <h3>EAR Trend (Real-Time)</h3>
+            <canvas id="earChart"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    C++ · OpenCV · Dlib · Real-Time Monitoring Dashboard
+</footer>
+
+<!-- Your existing JS continues to work -->
+<script src="script.js"></script>
+
+</body>
+</html>
